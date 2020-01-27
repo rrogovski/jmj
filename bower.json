@@ -1,0 +1,19 @@
+{
+  "name": "jmj-avaliacao",
+  "version": "1.0.0",
+  "description": "Projeto para avaliação e seleção de candidatos a programadores javascript.",
+  "authors": [
+    "jmj <desenvovlimento@jmjsistemas.com.br>"
+  ],
+  "main": "assets/app/main.js",
+  "moduleType": [],
+  "license": "Todos direitos reservados a JMJ",
+  "private": true,
+  "dependencies": {
+    "jquery": "3.2.x",
+    "angular": "1.7.8",
+    "angular-ui-router": "1.0.22",
+    "admin-lte": "2.4.18",
+    "angular-route": "^1.7.9"
+  }
+}
