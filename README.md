@@ -7,8 +7,14 @@ $ bower install
 $ npm install
 ```
 
-### How to use
+## How to use
 
+### Build the assets
+```
+$ gulp build
+```
+
+### Run
 ```
 $ npm run dev
 ```
