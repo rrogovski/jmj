@@ -13,47 +13,48 @@
      * Service
      * @param $location
      * @param $http
-     * @returns {{getEmpresas: getEmpresasFn, getEmpresa: getEmpresaFn, updateEmpresa: updateFn, deleteEmpresa: deleteFn}}
+     * @returns {{getUser: (function(): {name: null, image: null, registerDate: null, job: null}), isLogined: (function(): boolean), login: loginFn, logout: logoutFn}}
      * @constructor
      */
     function ServiceFn($location, $http) {
-        var empresa = {
+        var user = {
             id: null,
-            razaoSocial: null,
-            cnpj: null,
-            logradouro: null,
-            municipio: null,
-            numero: null,
-            complemento: null,
-            bairro: null,
-            cep: null,
-            telefone: null,
             email: null,
-            site: null,
-            usuario: null,
-            createAt: null,
-            updateAt: null
+            name: null,
+            image: null,
+            registerDate: null,
+            job: null
         };
 
         return {
-            getEmpresas: getEmpresasFn,
-            getEmpresa: getEmpresaFn,
-            updateEmpresa: updateFn,
-            deleteEmpresa: deleteFn
+            getUser: getUserFn,
+            isLogined: isLoginedFn,
+            login: loginFn,
+            logout: logoutFn
         };
 
-        function getEmpresasFn() {
+        function getUserFn() {
+
+            // var idRandom = Math.floor(Math.random() * (+10 - +1)) + +1;
+
+            // $http.get("http://localhost:3333/empresa/" + idRandom)
+            // .then( function (res) {
+            //     console.log(res);
+            //     user.id = res.data.empresa.id;
+            //     user.email = res.data.empresa.email;
+            //     user.name = res.data.empresa.razaoSocial;
+            // }).catch( function (err) {
+            //     console.log(err);
+            // });
+
             return user;
         }
 
-        function getEmpresaFn(id) {
-            $http.get(`http://localhost:3333/empresa/${id}`)
-            .then( function (res) {
-                empresa = res.data.empresa;
-            }).catch( function (err) {
-                console.log(err);
-            });
+        function isLoginedFn() {
+            return user.name !== null;
+        }
 
+        function loginFn(userData) {
             user.name = userData.name;
             user.image = userData.image;
             user.registerDate = userData.registerDate;

@@ -16,14 +16,14 @@
 
         // State definitions
         $stateProvider
-            .state('app', {
-                abstract: true,
-                views: {
-                    'main@': {
-                        templateUrl: 'app/core/layouts/default.html'
-                    }
+        .state('app', {
+            abstract: true,
+            views: {
+                'main@': {
+                    templateUrl: 'app/core/layouts/default.html'
                 }
-            });
+            }
+        });
     }
 
 })();

@@ -4,7 +4,8 @@
     angular.module('main').config(ConfigFn);
 
     ConfigFn.$inject = [
-        "$locationProvider"
+        '$locationProvider',
+        // 'Restangular',
     ];
 
     /**

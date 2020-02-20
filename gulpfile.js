@@ -59,9 +59,11 @@ var angularTemplatecache = require("gulp-angular-templatecache");
 //This will redirect all requests to index.html file to allow seo friendly urls like tld/sports intead of tld/#/sports
 var historyApiFallback = require('connect-history-api-fallback');
 
-var babel = require('gulp-babel');
+var postcss = require('gulp-postcss');
 
-var minify = "yes";
+// var babel = require('gulp-babel');
+
+var minify = "no";
 var isServe = "false";
 
 var conf = {
@@ -74,7 +76,7 @@ var conf = {
     fontsSrcDir: ['src/fonts/*', 'assets/vendor/bootstrap-sass/assets/fonts/bootstrap/*', 'assets/vendor/bootstrap/dist/fonts/*'],
     fontsDestDir: 'assets/fonts/',
     jsSrcDir: 'src/app/',
-    jsDestDir: 'assets/scripts/'
+    jsDestDir: 'assets/scripts/',
 };
 
 var bowerConf = {
@@ -172,9 +174,49 @@ var bowerConf = {
                 "**/bootstrap-colorpicker.min.js"
             ]
         },
+        "jquery": {
+            "main": [
+                "./dist/jquery.js",
+            ]
+        },
+        "sweetalert": {
+            "main": [
+                "./dist/sweetalert.min.js",
+                "./dist/sweetalert.css"
+            ]
+        },
+        "datatables.net": {
+            "main": [
+                "./js/jquery.dataTables.js",
+            ]
+        },
+        "datatables.net-bs": {
+            "main": [
+                "./js/dataTables.bootstrap.js",
+                "./css/dataTables.bootstrap.css",
+            ]
+        },
+        "angular-datatables": {
+            "main": [
+                "./dist/angular-datatables.js",
+                "./dist/css/angular-datatables.css",
+                "./dist/plugins/bootstrap/angular-datatables.bootstrap.js",
+                "./dist/plugins/bootstrap/datatables.bootstrap.min.css"
+            ]
+        },
+        "restangular":{
+            "main": [
+                "./dist/restangular.js"
+            ]
+        },
         "ckeditor": {
             "ignore": true
-        }
+        },
+        "ngInfiniteScroll": {
+            "main": [
+                "./build/ng-infinite-scroll.js"
+            ]
+        },
     }
 };
 
@@ -182,7 +224,7 @@ gulp.task('bower', function () {
 
     var jsFilter = gulpFilter('**/*.js', {restore: true});
     var cssFilter = gulpFilter(['**/*.css'], {restore: true});
-    var fontFilter = gulpFilter(['**/*.eot', '**/*.woff', '**/*.svg', '**/*.ttf'], {restore: true});
+    var fontFilter = gulpFilter(['**/*.eot', '**/*.woff', '**/*.woff2', '**/*.svg', '**/*.ttf'], {restore: true});
     var imageFilter = gulpFilter(['**/*.gif', '**/*.png', '**/*.svg', '**/*.jpg', '**/*.jpeg'], {restore: true});
 
     return gulp.src(bowerMain(bowerConf))
@@ -190,10 +232,12 @@ gulp.task('bower', function () {
         .pipe(jsFilter)
         .pipe(concat('vendor.js'))
         .pipe(gulp.dest(conf.jsDestDir))
-        .pipe(babel({presets: ['@babel/env']}))
+        // .pipe(gulp.dest(conf.transpiled))
+        // .pipe(babel({presets: ['@babel/env']}))
         .pipe(uglify())
         .pipe(rename("vendor.min.js"))
         .pipe(gulp.dest(conf.jsDestDir))
+        // .pipe(gulp.dest(conf.transpiled))
         .pipe(jsFilter.restore)
         // CSS
         .pipe(cssFilter)
@@ -237,7 +281,7 @@ gulp.task('js', function () {
         })))
         .pipe(concat("main.js"))
         .pipe(ngAnnotate())
-        .pipe(babel({presets: ['@babel/env']}))
+        // .pipe(babel({presets: ['@babel/env']}))
         .pipe(gulpIf(minify === 'yes', uglify()))
         .pipe(rename("main.min.js"))
         .pipe(gulp.dest(conf.jsDestDir))
@@ -248,10 +292,10 @@ gulp.task('sass', function () {
     return gulp.src(
         [
             conf.srcDir + "index.scss",
-            conf.appStylesDir + '**/**/*.scss'
+            conf.appStylesDir + '/**/**/*.scss'
         ])
-        .pipe(concat("main.css"))
         .pipe(sass().on('error', sass.logError)) // log errors to console
+        .pipe(concat("main.css"))
         .pipe(gulpIf(minify === 'yes', cssnano()))	//Minify
         .pipe(rename('main.min.css'))
         .pipe(gulp.dest(conf.cssDestDir)) // Save in the given folder
@@ -353,10 +397,43 @@ gulp.task('serve', function (callback) {
     )
 });
 
+gulp.task('autoprefixer', () => {
+    const autoprefixer = require('autoprefixer')
+    const sourcemaps = require('gulp-sourcemaps')
+    const postcss = require('gulp-postcss')
+
+    // .pipe(sass().on('error', sass.logError)) // log errors to console
+    //     .pipe(concat("main.css"))
+    //     .pipe(gulpIf(minify === 'yes', cssnano()))	//Minify
+    //     .pipe(rename('main.min.css'))
+    //     .pipe(gulp.dest(conf.cssDestDir)) 
+  
+    return gulp.src(conf.cssDestDir + '*.css')
+      .pipe(sourcemaps.init())
+      .pipe(postcss([ autoprefixer() ]))
+      .pipe(sourcemaps.write('.'))
+      .pipe(gulp.dest(conf.cssDestDir))
+  });
+
+
+// gulp.task('transpile', () => {
+//     return gulp.src([
+//         conf.jsSrcDir + '/**/*.js',
+//         // conf.jsSrcDir + '/app.js',
+//         // conf.jsSrcDir + '/core/**/*.js',
+//         // conf.jsSrcDir + '/pages/**/*.js',
+//         // conf.jsSrcDir + '/modules/**/*.js',
+//     ])
+//     .pipe(babel({ presets: ['@babel/env'] }))
+//     .pipe(gulp.dest(conf.transpiled));
+//     });
+
 gulp.task('build', function (callback) {
     runSequence(
         'clean:assets',
         'sass',
+        // 'transpile',
+        // 'autoprefixer',
         'js',
         'bower',
         ['images', 'fonts'],

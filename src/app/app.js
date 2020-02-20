@@ -2,7 +2,10 @@
     'use strict';
 
     angular.module('main', [
-        "ui.router"
+        "ngRoute",
+        "ui.router",
+        "datatables",
+        "restangular",
     ]);
 
 })();

@@ -1,0 +1,24 @@
+<div class="card-product">
+  <div class="prod_img">
+    <img src="https://rukminim1.flixcart.com/image/312/312/j2hw58w0/computer/n/p/g/dell-inspiron-3467-notebook-original-imaetu5cfhy3fg5r.jpeg?q=70" alt=""/>
+  </div>
+  <div class="prod_name">Nome do Produto</div>
+  <div class="prod_brand">by Marca</div>
+  <div class="prod_desc">Descricao</div>
+  <div class="prod_price">R$ 0,00</div>                     
+  <div star-rating rating-value="product.product_rate" max="5" class="rating" ng-class="{'star1' : product.product_rate == '1','star2' : product.product_rate == '2','star3' : product.product_rate == '3','star4' : product.product_rate == '4','star5' : product.product_rate == '5'}"></div>
+  <div class="like_dis">
+    <ul>
+        <li>
+        <div class="like"></div>
+              <div class="like_cou">{{product.product_like}}</div>
+        </li>
+          <li>
+          <div class="dislike"></div>
+              <div class="dlike_cou">{{product.product_dislike}}</div>
+        </li>
+      </ul>
+  </div>
+  <div class="prod_detail"></div>
+  <button class="prod_cart" ng-click="addTocart($index)" ng-disabled="product.disable">Lance</button>
+</div>

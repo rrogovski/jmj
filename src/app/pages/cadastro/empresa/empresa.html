@@ -1,0 +1,175 @@
+<section class="content-header">
+    <h1>
+        Empresa
+        <small>Dados da empresa</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Cadastro</a></li>
+        <li><a ui-sref="app.empresas">Empresas</a></li>
+        <li class="active">Empresa</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Dados da Empresa</h3>
+                </div>
+                <form class="form" name="empresaForm" ng-submit="vmEmpresa.save(empresaForm.$valid, empresaForm)" novalidate>
+                    <div class="box-body">
+                        <div ng-if="vmEmpresa.alerts" class="alert alert-{{alert.type}}" ng-repeat="alert in vmEmpresa.alerts">
+                            <h4>{{alert.title}}</h4>
+                            <p>{{alert.msg}}</p>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Dados</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <div class="row">
+
+                                    <div class="col-md-12">
+                                        <div class="form-group" ng-class="{ 'has-error': empresaForm.razaoSocial.$invalid && ( vmEmpresa.formSubmitted || empresaForm.razaoSocial.$touched) }">
+                                            <label for="razaoSocial" class="control-label">Razão Social</label>
+                                            <input type="text" class="form-control" ng-model="vmEmpresa.empresa.razaoSocial" name="razaoSocial" placeholder="Razão Social" required>
+                                            <p ng-show="empresaForm.razaoSocial.$error.required && ( vmEmpresa.formSubmitted || empresaForm.razaoSocial.$touched)" class="help-block">Razão Social é obrigatória.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-md-4">
+                                        <div class="form-group" ng-class="{ 'has-error': empresaForm.cnpj.$invalid && ( vmEmpresa.formSubmitted || empresaForm.cnpj.$touched) }">
+                                            <label for="cnpj" class="control-label">CNPJ</label>
+                                            <input type="text" class="form-control" ng-model="vmEmpresa.empresa.cnpj" id="cnpj" name="cnpj" placeholder="CNPJ" required>
+                                            <p ng-show="empresaForm.cnpj.$error.required && ( vmEmpresa.formSubmitted || empresaForm.cnpj.$touched)" class="help-block">CNPJ é obrigatório.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group" ng-class="{ 'has-error': empresaForm.phone.$invalid && ( vmEmpresa.formSubmitted || empresaForm.phone.$touched) }">
+                                            <label for="telefone" class="control-label">Telefone</label>
+                                            <input type="text" class="form-control" ng-model="vmEmpresa.empresa.telefone" id="telefone" name="telefone" placeholder="Telefone" required minlength="9" maxlength="15">
+                                            <p ng-show="empresaForm.telefone.$error.required && ( vmEmpresa.formSubmitted || empresaForm.telefone.$touched)" class="help-block">Telefone é obrigatório.</p>
+                                            <p ng-show="empresaForm.telefone.$error.phone && ( vmEmpresa.formSubmitted || empresaForm.telefone.$touched)" class="help-block">Esse não é um telefone válido.</p>
+                                            <p ng-show="empresaForm.telefone.$error.pattern" class="help-block">Esse não é um telefone válido.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group" ng-class="{ 'has-error': empresaForm.email.$invalid && ( vmEmpresa.formSubmitted || empresaForm.email.$touched) }">
+                                            <label for="email" class="control-label">E-mail</label>
+                                            <input type="email" class="form-control" ng-model="vmEmpresa.empresa.email" name="email" placeholder="Email" required>
+                                            <p ng-show="empresaForm.email.$error.required && ( vmEmpresa.formSubmitted || empresaForm.email.$touched)" class="help-block">Email é obrigatório.</p>
+                                            <p ng-show="empresaForm.email.$error.email  && ( vmEmpresa.formSubmitted || empresaForm.email.$touched)" class="help-block">Esse não é um email válido.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Endereço</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div via-cep-form>
+                                    <div class="row">
+
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label for="cep" class="control-label">CEP</label>
+                                                <input type="text" class="form-control" ng-model="vmEmpresa.empresa.cep" name="cep" placeholder="CEP" via-cep="cep" mask="99.999-999" required>
+                                                <span ng-show="empresaForm.cep.$error.cep">Cep inválido</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-8">
+                                            <div class="form-group">
+                                                <label for="logradouro" class="control-label">Logradouro</label>
+                                                <input type="text" class="form-control" ng-model="vmEmpresa.empresa.logradouro" name="street" placeholder="Logradouro" via-cep="logradouro" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-2">
+                                            <div class="form-group">
+                                                <label for="numero" class="control-label">Número</label>
+                                                <input type="text" class="form-control" ng-model="vmEmpresa.empresa.numero" name="number" placeholder="Número" required>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="complemento" class="control-label">Complemento</label>
+                                                <input type="text" class="form-control" ng-model="vmEmpresa.empresa.complemento" name="complemento" placeholder="Complemento">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="bairro" class="control-label">Bairro</label>
+                                                <input type="text" class="form-control" ng-model="vmEmpresa.empresa.bairro" name="neighborhood" placeholder="Bairro" via-cep="bairro" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="municipio" class="control-label">Município</label>
+                                                <input type="text" class="form-control" ng-model="vmEmpresa.empresa.municipio" name="municipio" placeholder="Município" via-cep="localidade" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Senha</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <div class="row">
+
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="usuario" class="control-label">Usuário</label>
+                                            <input type="text" class="form-control" ng-model="vmEmpresa.empresa.usuario" name="product-name" placeholder="Usuário" ng-readonly="vmEmpresa.empresaId">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="senha" class="control-label">Senha</label>
+                                            <input type="password" class="form-control" ng-model="vmEmpresa.empresa.senha" name="senha" placeholder="Preencha para alterar a senha atual">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="box-footer">
+                        <a ui-sref="app.empresas" class="btn btn-default"><i class="fa fa-angle-double-left"></i> Voltar</a>
+                        <button type="submit" class="btn btn-primary pull-right">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>

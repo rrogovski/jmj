@@ -52,12 +52,13 @@
 
         $http.get("http://localhost:3333/empresa/" + idRandom)
         .then( function (res) {
-            console.log(res);
+            // console.log(res);
             vm.userData.id = res.data.empresa.id;
             vm.userData.email = res.data.empresa.email;
             vm.userData.name = res.data.empresa.razaoSocial;
         }).catch( function (err) {
             console.log(err);
+            vm.error = err;
         });
 
         vm.login = loginFn;

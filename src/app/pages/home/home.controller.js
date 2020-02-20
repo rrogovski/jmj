@@ -50,35 +50,35 @@
     function ControllerFn() {
         var vm = this;
 
-        vm.smallBox1 = {
+        vm.smallBoxEmpresas = {
             background: "bg-aqua",
             title: "50",
-            smallTitle: "New Orders",
-            icon: "ion ion-bag",
-            url: "#"
-        };
-
-        vm.smallBox2 = {
-            background: "bg-green",
-            title: "53%",
-            smallTitle: "Bounce Rate",
-            icon: "ion ion-stats-bars",
-            url: "#"
-        };
-
-        vm.smallBox3 = {
-            background: "bg-yellow",
-            title: "44",
-            smallTitle: "User Registrations",
+            smallTitle: "Empresas Cadastradas",
             icon: "ion ion-person-add",
             url: "#"
         };
 
-        vm.smallBox4 = {
+        vm.smallBoxLeiloes = {
+            background: "bg-green",
+            title: "53%",
+            smallTitle: "Leilões",
+            icon: "ion ion-pie-graph",
+            url: "#"
+        };
+
+        vm.smallBoxLotes = {
+            background: "bg-yellow",
+            title: "44",
+            smallTitle: "Lotes",
+            icon: "ion ion-bag",
+            url: "#"
+        };
+
+        vm.smallBoxLeiloesEmAndamento = {
             background: "bg-red",
             title: "65",
-            smallTitle: "Unique Visitors",
-            icon: "ion ion-pie-graph",
+            smallTitle: "Leilões em Andamento",
+            icon: "ion ion-stats-bars",
             url: "#"
         };
 
