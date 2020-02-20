@@ -9,6 +9,27 @@ $ npm install
 
 ## How to use
 
+### Set database config
+
+Set your database variables in the file ./config/database.js
+
+```
+dialect: 'postgres',
+host: 'localhost',
+username: 'username',
+password: 'password',
+database: 'database_name',
+```
+
+### Set database config
+
+Creating and Populate the tables, run the migrates and seeders using the commands below
+
+```
+$ npx sequelize db:migrate
+$ npx sequelize db:seed:all
+```
+
 ### Build the assets
 ```
 $ gulp build

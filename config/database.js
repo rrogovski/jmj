@@ -1,7 +1,5 @@
 const pg = require('pg');
 
-const connectionString = 'postgres://postgres:postgres@localhost/jmj';
-
 module.exports = {
   dialect: 'postgres',
   host: 'localhost',
