@@ -17,11 +17,14 @@
     "pg": "^4.5.7"
   },
   "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
     "browser-sync": "^2.24.6",
     "connect-history-api-fallback": "^1.5.0",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-angular-templatecache": "^2.2.1",
+    "gulp-babel": "^8.0.0",
     "gulp-cache": "^1.0.2",
     "gulp-concat": "^2.6.1",
     "gulp-cssnano": "^2.1.3",

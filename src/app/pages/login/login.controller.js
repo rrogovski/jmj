@@ -28,16 +28,17 @@
         });
     }
 
-    ControllerFn.$inject = ["UserService", "$location"];
+    ControllerFn.$inject = ["UserService", "$location", "$http"];
 
     /**
      * Controller Function
      *
      * @param UserService
      * @param $location
+     * @param $http
      * @constructor
      */
-    function ControllerFn(UserService, $location) {
+    function ControllerFn(UserService, $location, $http) {
         var vm = this;
 
         vm.userData = {
@@ -46,6 +47,18 @@
             registerDate: "2012",
             job: "Web Developer"
         };
+
+        var idRandom = Math.floor(Math.random() * (+10 - +1)) + +1;
+
+        $http.get("http://localhost:3333/empresa/" + idRandom)
+        .then( function (res) {
+            console.log(res);
+            vm.userData.id = res.data.empresa.id;
+            vm.userData.email = res.data.empresa.email;
+            vm.userData.name = res.data.empresa.razaoSocial;
+        }).catch( function (err) {
+            console.log(err);
+        });
 
         vm.login = loginFn;
 

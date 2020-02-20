@@ -59,6 +59,8 @@ var angularTemplatecache = require("gulp-angular-templatecache");
 //This will redirect all requests to index.html file to allow seo friendly urls like tld/sports intead of tld/#/sports
 var historyApiFallback = require('connect-history-api-fallback');
 
+var babel = require('gulp-babel');
+
 var minify = "yes";
 var isServe = "false";
 
@@ -188,6 +190,7 @@ gulp.task('bower', function () {
         .pipe(jsFilter)
         .pipe(concat('vendor.js'))
         .pipe(gulp.dest(conf.jsDestDir))
+        .pipe(babel({presets: ['@babel/env']}))
         .pipe(uglify())
         .pipe(rename("vendor.min.js"))
         .pipe(gulp.dest(conf.jsDestDir))
@@ -234,6 +237,7 @@ gulp.task('js', function () {
         })))
         .pipe(concat("main.js"))
         .pipe(ngAnnotate())
+        .pipe(babel({presets: ['@babel/env']}))
         .pipe(gulpIf(minify === 'yes', uglify()))
         .pipe(rename("main.min.js"))
         .pipe(gulp.dest(conf.jsDestDir))

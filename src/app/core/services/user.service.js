@@ -35,17 +35,17 @@
 
         function getUserFn() {
 
-            var idRandom = Math.floor(Math.random() * (+10 - +1)) + +1;
+            // var idRandom = Math.floor(Math.random() * (+10 - +1)) + +1;
 
-            $http.get("http://localhost:3333/empresa/" + idRandom)
-            .then( function (res) {
-                console.log(res);
-                user.id = res.data.empresa.id;
-                user.email = res.data.empresa.email;
-                user.name = res.data.empresa.razaoSocial;
-            }).catch( function (err) {
-                console.log(err);
-            });
+            // $http.get("http://localhost:3333/empresa/" + idRandom)
+            // .then( function (res) {
+            //     console.log(res);
+            //     user.id = res.data.empresa.id;
+            //     user.email = res.data.empresa.email;
+            //     user.name = res.data.empresa.razaoSocial;
+            // }).catch( function (err) {
+            //     console.log(err);
+            // });
 
             return user;
         }
