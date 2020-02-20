@@ -1,16 +1,3 @@
-// .prod-img 
-// {
-//   display: flex;
-//   flex-direction: row;
-//   align-items: center;
-// }
-
-// img {
-//   width: 100px;
-//   height: 100px;
-//   border-radius: 10px;
-// }
-			
 .card-produto{
 	margin: 5px;
 	padding: 10px;
@@ -20,9 +7,9 @@
 			
 .prod-img{
 	width: 100%;
-    height: 150px;
-    float: left;
-   	overflow:hidden;
+  height: 150px;
+  float: left;
+  overflow:hidden;
 	/*box-shadow: 2px 2px 10px rgba(0,0,0,0.2);*/
   background: white;
 	text-align: center;
@@ -133,22 +120,12 @@
 	text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
 }
 
-/*@keyframes star{
-	0%{
-		width:0px;
-	}
-	
-	100%{
-		width:66px;
-	}
-}*/
-
 .like-dislike{
 	position: absolute;
-    right: 2px;
+  right: 2px;
 	color: #b91b1b;
-    bottom: 25px;
-    font-size: 0.8em;
+  bottom: 25px;
+  font-size: 0.8em;
 }
 
 .like-dislike ul{
@@ -159,9 +136,9 @@
 	margin: 0px 5px;
 }
 
-.like-cou, .dlike-cou{
+.like-cou, .dislike-cou{
 	color: #888;
-    margin-top: 2px;
+  margin-top: 2px;
 }
 
 .like, .dislike{

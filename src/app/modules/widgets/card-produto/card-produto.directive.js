@@ -33,5 +33,9 @@
       var vm = this;
       vm.produto = {};
       vm.produto.imageurl = 'https://i.pinimg.com/736x/72/9e/ab/729eab53deed60267c202c140ab75ae5.jpg';
+      vm.produto.rate = 4;
+      vm.produto.likes = 100;
+      vm.produto.dislikes = 10;
+      vm.produto.preco = 1550.00;
   }
 })();

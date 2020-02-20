@@ -5,17 +5,17 @@
   <div class="prod-nome">Nome do Produto</div>
   <div class="prod-vendedor">by Marca</div>
   <div class="prod-descricao">Descricao</div>
-  <div class="prod-preco">R$ 0,00</div>                     
-  <div star-rating rating-value="produto.produto_rate" max="5" class="rating" ng-class="{'star1' : produto.produto_rate == '1','star2' : produto.produto_rate == '2','star3' : produto.produto_rate == '3','star4' : produto.produto_rate == '4','star5' : produto.produto_rate == '5'}"></div>
+  <div class="prod-preco">{{ vmCardProduto.produto.preco | currency:'R$' }}</div>                     
+  <div star-rating rating-value="vmCardProduto.produto.rate" max="5" class="rating" ng-class="{'star1' : vmCardProduto.produto.rate == '1','star2' : vmCardProduto.produto.rate == '2','star3' : vmCardProduto.produto.rate == '3','star4' : vmCardProduto.produto.rate == '4','star5' : vmCardProduto.produto.rate == '5'}"></div>
   <div class="like-dislike">
     <ul>
         <li>
         <div class="like"></div>
-              <div class="like-cou">{{ vmCardProduto.produto.like }}</div>
+              <div class="like-cou">{{ vmCardProduto.produto.likes }}</div>
         </li>
           <li>
           <div class="dislike"></div>
-              <div class="dislike-cou">{{ vmCardProduto.produto.dislike }}</div>
+              <div class="dislike-cou">{{ vmCardProduto.produto.dislikes }}</div>
         </li>
       </ul>
   </div>
