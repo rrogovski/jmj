@@ -21,8 +21,6 @@ password: 'password',
 database: 'database_name',
 ```
 
-### Set database config
-
 Creating and Populate the tables, run the migrates and seeders using the commands below
 
 ```
