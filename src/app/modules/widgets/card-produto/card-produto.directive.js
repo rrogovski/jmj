@@ -1,7 +1,7 @@
 (function () {
   'use strict';
 
-  angular.module('main').directive('cardProduct', DirectiveFn);
+  angular.module('main').directive('cardProduto', DirectiveFn);
 
   /**
    * Directive
@@ -18,8 +18,8 @@
           },
           bindToController: true,
           controller: ControllerFn,
-          controllerAs: "vmCardProduct",
-          templateUrl: "app/modules/widgets/card-product/card-product.html"
+          controllerAs: "vmCardProduto",
+          templateUrl: "app/modules/widgets/card-produto/card-produto.html"
       };
 
   }
@@ -31,5 +31,7 @@
    */
   function ControllerFn() {
       var vm = this;
+      vm.produto = {};
+      vm.produto.imageurl = 'https://i.pinimg.com/736x/72/9e/ab/729eab53deed60267c202c140ab75ae5.jpg';
   }
 })();

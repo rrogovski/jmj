@@ -1,0 +1,24 @@
+<div class="card-produto">
+  <div class="prod-img">
+    <img src="{{ vmCardProduto.produto.imageurl }}" alt=""/>
+  </div>
+  <div class="prod-nome">Nome do Produto</div>
+  <div class="prod-vendedor">by Marca</div>
+  <div class="prod-descricao">Descricao</div>
+  <div class="prod-preco">R$ 0,00</div>                     
+  <div star-rating rating-value="produto.produto_rate" max="5" class="rating" ng-class="{'star1' : produto.produto_rate == '1','star2' : produto.produto_rate == '2','star3' : produto.produto_rate == '3','star4' : produto.produto_rate == '4','star5' : produto.produto_rate == '5'}"></div>
+  <div class="like-dislike">
+    <ul>
+        <li>
+        <div class="like"></div>
+              <div class="like-cou">{{ vmCardProduto.produto.like }}</div>
+        </li>
+          <li>
+          <div class="dislike"></div>
+              <div class="dislike-cou">{{ vmCardProduto.produto.dislike }}</div>
+        </li>
+      </ul>
+  </div>
+  <div class="prod-detalhe"></div>
+  <button class="prod-lance" ng-click="lance($index)" ng-disabled="produto.disable">Lance</button>
+</div>
