@@ -6,6 +6,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const empresaController = require('./api/empresaController');
+const leilaoController = require('./api/leilaoController');
+const loteController = require('./api/loteController');
 
 require('./database');
 
@@ -41,3 +43,15 @@ app.get('/empresa/:id', empresaController.get);
 app.post('/empresa',empresaController.store);
 app.put('/empresa/:id', empresaController.update);
 app.delete('/empresa/:id', empresaController.destroy);
+
+app.get('/leilao', leilaoController.index);
+app.get('/leilao/:id', leilaoController.get);
+app.post('/leilao', leilaoController.store);
+app.put('/leilao/:id', leilaoController.update);
+app.delete('/leilao/:id', leilaoController.destroy);
+
+app.get('/lote', loteController.index);
+app.get('/lote/:id', loteController.get);
+app.post('/lote', loteController.store);
+app.put('/lote/:id', loteController.update);
+app.delete('/lote/:id', loteController.destroy);

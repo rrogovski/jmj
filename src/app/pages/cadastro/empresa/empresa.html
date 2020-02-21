@@ -61,12 +61,19 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-3">
                                         <div class="form-group" ng-class="{ 'has-error': empresaForm.email.$invalid && ( vmEmpresa.formSubmitted || empresaForm.email.$touched) }">
                                             <label for="email" class="control-label">E-mail</label>
                                             <input type="email" class="form-control" ng-model="vmEmpresa.empresa.email" name="email" placeholder="Email" required>
                                             <p ng-show="empresaForm.email.$error.required && ( vmEmpresa.formSubmitted || empresaForm.email.$touched)" class="help-block">Email é obrigatório.</p>
                                             <p ng-show="empresaForm.email.$error.email  && ( vmEmpresa.formSubmitted || empresaForm.email.$touched)" class="help-block">Esse não é um email válido.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group" ng-class="{ 'has-error': empresaForm.site.$invalid && ( vmEmpresa.formSubmitted || empresaForm.site.$touched) }">
+                                            <label for="site" class="control-label">Site</label>
+                                            <input type="site" class="form-control" ng-model="vmEmpresa.empresa.site" name="site" placeholder="Endereço do site">
                                         </div>
                                     </div>
                                 </div>

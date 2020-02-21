@@ -12,6 +12,10 @@ class Leilao extends Model {
       tableName: 'leilao',
     })
   }
+
+  static associate(models) {
+    this.belongsTo(models.Empresa, { foreignKey: 'vendedor', as: 'dados_vendedor'} );
+  }
 }
 
 module.exports = Leilao;
