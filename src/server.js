@@ -8,6 +8,7 @@ const path = require('path');
 const empresaController = require('./api/empresaController');
 const leilaoController = require('./api/leilaoController');
 const loteController = require('./api/loteController');
+const unidadeController = require('./api/unidadeController');
 
 require('./database');
 
@@ -55,3 +56,9 @@ app.get('/lote/:id', loteController.get);
 app.post('/lote', loteController.store);
 app.put('/lote/:id', loteController.update);
 app.delete('/lote/:id', loteController.destroy);
+
+app.get('/unidade', unidadeController.index);
+app.get('/unidade/:id', unidadeController.get);
+app.post('/unidade', unidadeController.store);
+app.put('/unidade/:id', unidadeController.update);
+app.delete('/unidade/:id', unidadeController.destroy);

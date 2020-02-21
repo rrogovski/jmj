@@ -1,0 +1,89 @@
+<section class="content-header">
+    <h1>
+        Leilão
+        <small>Dados do Leilão</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Cadastro</a></li>
+        <li><a ui-sref="app.leiloes">Leilões</a></li>
+        <li class="active">Leilão</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Dados do Leilão</h3>
+                </div>
+                <form class="form" name="leilaoForm" ng-submit="vmLeilao.save(leilaoForm.$valid, leilaoForm)" novalidate>
+                    <div class="box-body">
+                        <div ng-if="vmLeilao.alerts" class="alert alert-{{alert.type}}" ng-repeat="alert in vmLeilao.alerts">
+                            <h4>{{alert.title}}</h4>
+                            <p>{{alert.msg}}</p>
+                        </div>
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Dados</h3>
+                            </div>
+                            <div class="panel-body">
+
+                                <div class="row">
+
+                                    <div class="col-md-12">
+                                        <div class="form-group" ng-class="{ 'has-error': leilaoForm.codigo.$invalid && ( vmLeilao.formSubmitted || leilaoForm.codigo.$touched) }">
+                                            <label for="codigo" class="control-label">Código</label>
+                                            <input type="text" class="form-control" ng-model="vmLeilao.leilao.codigo" name="codigo" placeholder="Código" required>
+                                            <p ng-show="leilaoForm.codigo.$error.required && ( vmLeilao.formSubmitted || leilaoForm.codigo.$touched)" class="help-block">Código é obrigatório.</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-md-4">
+                                        <div class="form-group" ng-class="{ 'has-error': leilaoForm.descricao.$invalid && ( vmLeilao.formSubmitted || leilaoForm.descricao.$touched) }">
+                                            <label for="descricao" class="control-label">Descrição</label>
+                                            <input type="text" class="form-control" ng-model="vmLeilao.leilao.descricao" id="descricao" name="descricao" placeholder="Descrição" required>
+                                            <p ng-show="leilaoForm.descricao.$error.required && ( vmLeilao.formSubmitted || leilaoForm.descricao.$touched)" class="help-block">Descrição é obrigatória.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <div class="form-group" ng-class="{ 'has-error': leilaoForm.vendedor.$invalid && ( vmLeilao.formSubmitted || leilaoForm.vendedor.$touched) }">
+                                            <label for="telefone" class="control-label">Telefone</label>
+                                            <input type="text" class="form-control" ng-model="vmLeilao.leilao.vendedor" id="vendedor" name="vendedor" placeholder="Vendedor" required>
+                                            <p ng-show="leilaoForm.vendedor.$error.required && ( vmLeilao.formSubmitted || leilaoForm.vendedor.$touched)" class="help-block">Vendedor é obrigatório.</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-3">
+                                        <div class="form-group" ng-class="{ 'has-error': leilaoForm.inicioPrevisto.$invalid && ( vmLeilao.formSubmitted || leilaoForm.inicioPrevisto.$touched) }">
+                                            <label for="inicioPrevisto" class="control-label">Início Previsto</label>
+                                            <div class="input-group date">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-calendar"></i>
+                                                </div>
+                                                <input type="text" class="form-control pull-right" ng-model="vmLeilao.leilao.inicioPrevisto" id="inicioPrevisto" name="inicioPrevisto" placeholder="inicioPrevisto" required>
+                                                <p ng-show="leilaoForm.inicioPrevisto.$error.required && ( vmLeilao.formSubmitted || leilaoForm.inicioPrevisto.$touched)" class="help-block">Início previsto é obrigatório.</p>
+                                                <p ng-show="leilaoForm.inicioPrevisto.$error.email  && ( vmLeilao.formSubmitted || leilaoForm.inicioPrevisto.$touched)" class="help-block">Data inválida.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="box-footer">
+                        <a ui-sref="app.leiloes" class="btn btn-default"><i class="fa fa-angle-double-left"></i> Voltar</a>
+                        <button type="submit" class="btn btn-primary pull-right">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>

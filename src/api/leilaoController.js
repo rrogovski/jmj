@@ -3,15 +3,15 @@ const Leilao = require('../models/Leilao');
 module.exports = {
   async index(req, res) {
     try {
-      const leilao = await Leilao.findAll();
+      const leiloes = await Leilao.findAll();
 
-      if (leilao === null) {
+      if (leiloes === null) {
         return res.status(404).json({
-          leilao: 'Record not found'
+          leiloes: 'Record not found'
         });
        }
 
-      return res.status(200).json({ leilao }); 
+      return res.status(200).json({ leiloes }); 
     } catch (error) {
       return res.status(400).json({ error });
     }

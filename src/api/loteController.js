@@ -3,15 +3,15 @@ const Lote = require('../models/Lote');
 module.exports = {
   async index(req, res) {
     try {
-      const lote = await Lote.findAll();
+      const lotes = await Lote.findAll();
 
-      if (lote === null) {
+      if (lotes === null) {
         return res.status(404).json({
-          lote: 'Record not found'
+          lotes: 'Record not found'
         });
        }
 
-      return res.status(200).json({ lote }); 
+      return res.status(200).json({ lotes }); 
     } catch (error) {
       return res.status(400).json({ error });
     }
